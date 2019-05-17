@@ -10,11 +10,16 @@
   <%= @story.content %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @story.status %>
+</p>
+
 
 <% if @story.is_active? %>
-  <%= link_to 'Inactive This Story' %>
+  <%= link_to 'Inactive This Story', inactive_story_path, method: :put %>
 <% else %>
-  <%= link_to "Active This Story"%>
+  <%= link_to "Active This Story", active_story_path, method: :put%>
 <% end %>
 <br>
 

@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @storiess = Story.all
+    @stories = Story.all
   end
 
   # GET /stories/1
@@ -62,6 +62,18 @@ class StoriesController < ApplicationController
     end
   end
 
+  def active
+    @story = Story.find(params[:id])
+    @story.update(is_active: true)
+    redirect_to story_path(@story), flash: {notice: "Active story now"}
+  end
+
+  def inactive
+    @story = Story.find(params[:id])
+    @story.update(is_active: false)
+    redirect_to story_path(@story), flash: {notice: "Inactive story now"}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
@@ -70,6 +82,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :content)
+      params.require(:story).permit(:title, :content, :status)
     end
 end

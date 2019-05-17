@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_05_16_125641) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_active"
+    t.string "status"
   end
 
   create_table "users", force: :cascade do |t|
