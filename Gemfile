@@ -64,3 +64,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem "letter_opener", :group => :development
 gem 'pry', '~> 0.12.2'
+gem 'jquery-rails'

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       put :active
       put :inactive
     end
+
+    collection do 
+      get :story_by_status
+    end  
   end    
 
 end

@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Stories</h1>
@@ -28,4 +29,21 @@
 
 <%= link_to 'New Story', new_story_path %><br></br>
 
-<%= select_tag(:story_by_status, options_for_select([['Active', :active], ['Inactive', :inactive], ['All', :all]]), :prompt => 'Select a Status') %>
+<%= select_tag(:story_by_status, options_for_select([['Active', :active], ['Inactive', :inactive], ['All', :all]]), :prompt => 'Select a Status') %><br></br>
+
+<div id="story_listing">
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    debugger
+    $("#story_by_status").on('change', function(){
+      statusValue = $(this).children("option:selected").val();
+      $.ajax({
+        url: "<%= story_by_status_stories_path %>", 
+        method: 'GET',
+        data: { status: statusValue } 
+      });
+      debugger
+    });
+  });
+</script>

@@ -29,7 +29,8 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.html { redirect_to @story, notice: 'Story 
+         successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }
@@ -66,12 +67,28 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.update(is_active: true)
     redirect_to story_path(@story), flash: {notice: "Active story now"}
+    @stories = Story.where(active: true)
+    @story = Story.new
   end
 
   def inactive
     @story = Story.find(params[:id])
     @story.update(is_active: false)
     redirect_to story_path(@story), flash: {notice: "Inactive story now"}
+    @stories = Story.where(active: false)
+    @story = Story.new
+  end
+
+  def story_by_status
+    binding.pry
+    if params[:status] == "active"
+      @stories = Story.active_stories
+    elsif params[:status] == "inactive"
+      @stories = Story.inactive_stories
+    else
+      @stories = Story.all
+    end
+    
   end
 
   private
