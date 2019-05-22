@@ -1,21 +1,24 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :nested => :story
 
   # GET /stories
   # GET /stories.json
   def index
     @stories = Story.all
+    authorize! :index, @story
   end
 
   # GET /stories/1
   # GET /stories/1.json
   def show
-
+    # authorize! :read, @story
   end
 
   # GET /stories/new
   def new
     @story = Story.new
+     authorize! :new, @story
   end
 
   # GET /stories/1/edit
@@ -80,7 +83,7 @@ class StoriesController < ApplicationController
   end
 
   def story_by_status
-    binding.pry
+    
     if params[:status] == "active"
       @stories = Story.active_stories
     elsif params[:status] == "inactive"

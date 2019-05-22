@@ -4,6 +4,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <h3><b><%= f.label :Role %></h3>
+    <%= f.select :role, ['Admin', 'User'] %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

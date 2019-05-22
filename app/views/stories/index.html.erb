@@ -26,8 +26,9 @@
 </table>
 
 <br>
-
-<%= link_to 'New Story', new_story_path %><br></br>
+<% if can? :create, Story %>
+  <p><%= link_to "New Story", new_story_path %></p>
+<% end %>
 
 <%= select_tag(:story_by_status, options_for_select([['Active', :active], ['Inactive', :inactive], ['All', :all]]), :prompt => 'Select a Status') %><br></br>
 

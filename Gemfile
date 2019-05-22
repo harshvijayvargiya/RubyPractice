@@ -65,3 +65,5 @@ gem 'devise'
 gem "letter_opener", :group => :development
 gem 'pry', '~> 0.12.2'
 gem 'jquery-rails'
+gem 'cancancan'
+gem 'jquery-turbolinks'

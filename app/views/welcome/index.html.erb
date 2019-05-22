@@ -1,2 +1,5 @@
 
+<% if can? :index, Story %>
 <%= link_to 'New Story', new_story_path %>
+<% end %>
+

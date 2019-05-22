@@ -5,4 +5,10 @@ include Devise::Controllers::Rememberable
   def after_sign_in_remember_me(resource)
     remember_me resource
   end 
+
+  rescue_from CanCan::AccessDenied do |exception|
+  # flash[:error] = "Access denied."
+  # redirect_to root_path
+  redirect_to root_path, notice: 'Access denied.'
+end
 end
